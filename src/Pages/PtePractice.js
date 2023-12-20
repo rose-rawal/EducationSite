@@ -2,7 +2,7 @@ import React from 'react'
 
 const PtePractice = () => {
   return (
-    <div>PtePractice</div>
+    <div className='min-h-screen'>PtePractice</div>
   )
 }
 

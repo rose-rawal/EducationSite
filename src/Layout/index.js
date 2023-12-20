@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import route from '../Route/route'
 import { useNavigate } from 'react-router-dom'
+import context from '../context/maincontext'
 const Header = () => {
     const navigate=useNavigate()
+    const {isLoggedIn,setIsLoggedIn}=useContext(context)
     const [displayNav,setDisplayNav]=useState(false)
     const handleRedirect=(e,path,name)=>{
         e.preventDefault();
@@ -14,6 +16,11 @@ const Header = () => {
         else{
             navigate(path)
         }
+    }
+
+    const handleLogOut=(e)=>{
+        e.preventDefault();
+        setIsLoggedIn(false)
     }
     
   return (
@@ -27,21 +34,30 @@ const Header = () => {
                 )
             })}
             </ul>
-            <ul className='flex'>
-            {route.slice(3,route.length).map(n=>{
+            {!isLoggedIn && (
+                <ul className='flex'>
+            {route.slice(3,5).map(n=>{
                 return (
                         <li className='px-5 cursor-pointer hover:underline hover:text-green-800' key={n.name} onClick={(e)=>{handleRedirect(e,n.path)}} >{n.name}</li>
                 )
             })}
             </ul>
+            )}
+            {
+                isLoggedIn &&(
+                    <ul className='flex'>
+                        <li className='px-5 cursor-pointer hover:underline hover:text-green-800' key='logOut' onClick={(e)=>{handleLogOut(e)}} >Logout</li>
+                    </ul>
+                )
+            }
         </div>
          {displayNav&&(
             <div className='absolute left-0 top-14 py-7 flex justify-between w-full px-48 bg-white text-sm' id='displayNav'>
             <ul><h3 className='text-lg font-bold pb-4'>Reading</h3>
-                <li><a href="#">Read Aloud</a></li>
-                <li><a href="#">Repeat Sentence</a></li>
-                <li><a href="#">Describe Image</a></li>
-                <li><a href="#">Re-tell Lecture</a></li>
+                <li><a href="#">Reading & Writing: Fill in the blanks</a></li>
+                <li><a href="#">Multiple Choice (Multiple)</a></li>
+                <li><a href="#">Reorder Paragraphs</a></li>
+                <li><a href="#">Peading: Fill in the blanks</a></li>
             </ul>
             <ul><h3 className='text-lg font-bold pb-4'>Writing</h3>
                 <li><a href="#">Summarize Written Text</a></li>
@@ -49,10 +65,10 @@ const Header = () => {
                 
             </ul>
             <ul><h3 className='text-lg font-bold pb-4'>Listening</h3>
-                <li><a href="#">Read Aloud</a></li>
-                <li><a href="#">Repeat Sentence</a></li>
-                <li><a href="#">Describe Image</a></li>
-                <li><a href="#">Re-tell Lecture</a></li>
+                <li><a href="#" onClick={e=>handleRedirect(e,'/summarize')}>Summarize the spoken text</a></li>
+                <li><a href="#">Multiple Choice</a></li>
+                <li><a href="#">Fill in the blanks</a></li>
+                <li><a href="#">Highlight the correct summary</a></li>
             </ul>
             <ul><h3 className='text-lg font-bold pb-4'>Speaking</h3>
                 <li><a href="#">Read Aloud</a></li>

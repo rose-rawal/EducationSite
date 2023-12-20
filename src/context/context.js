@@ -6,9 +6,13 @@ const Context = ({children}) => {
         Email:'',
         Password:''
     })
-    const abc=5
+    const [login,setLogin]=useState({
+        Email:'',
+        Password:''
+    })
+    const [isLoggedIn,setIsLoggedIn]=useState(false)
   return (
-    <context.Provider value={{signUp,setSignUp,abc}}>
+    <context.Provider value={{signUp,setSignUp,login,setLogin,isLoggedIn,setIsLoggedIn}}>
         {children}
     </context.Provider>
   )
