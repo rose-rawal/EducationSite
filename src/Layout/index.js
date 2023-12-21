@@ -52,7 +52,7 @@ const Header = () => {
             }
         </div>
          {displayNav&&(
-            <div className='absolute left-0 top-14 py-7 flex justify-between w-full px-48 bg-white text-sm' id='displayNav'>
+            <div className='absolute left-0 top-14 py-7 flex justify-between w-full px-48 bg-white text-sm z-50' id='displayNav'>
             <ul><h3 className='text-lg font-bold pb-4'>Reading</h3>
                 <li><a href="#">Reading & Writing: Fill in the blanks</a></li>
                 <li><a href="#">Multiple Choice (Multiple)</a></li>

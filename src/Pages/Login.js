@@ -25,6 +25,7 @@ const Login = () => {
       },2000)
     }
     else{
+      setLogin(res);
       setIsLoggedIn(true)
       navigate('/practice')
     }
@@ -37,7 +38,7 @@ const Login = () => {
       <form action="" className='flex flex-col items-center gap-6 mt-10'>
        <input type="text" placeholder='Email' className='text-center w-64 h-8 border-black border-solid border-b-2' onChange={(e)=>handleChange(e,'Email')}/>
        <input type="password" placeholder='Password' className='text-center w-64 h-8 border-black border-solid border-b-2' onChange={(e)=>handleChange(e,'Password')}/>
-       <button className='text-lg font-semibold px-7 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600' onClick={(e)=>handleSignUp(e)}>SignUp</button>
+       <button className='text-lg font-semibold px-7 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600' onClick={(e)=>handleSignUp(e)}>Login</button>
       </form>
     </div>
   )
