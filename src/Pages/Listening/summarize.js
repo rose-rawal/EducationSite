@@ -30,6 +30,7 @@ const Summarize = () => {
         console.log(login.Name)
         
     }
+    
   return (
     <div className='flex flex-col items-center gap-10 py-10 relative'>
         <h2 className='text-2xl font-bold'>Listening Test 1</h2>
@@ -51,6 +52,8 @@ const Summarize = () => {
             <div className='text-center underline text-gray-500 text-xs pt-3 hover:text-black cursor-pointer' onClick={e=>{e.preventDefault();navigate('/practice')}}>Goto Dashboard</div>
         </div>
 
+
+        
 
     </div>
   )
